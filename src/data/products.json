@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Red Velvet Cupcake",
+    "slug": "red-velvet-cupcake",
+    "categoryId": 1,
+    "price": 35000,
+    "description": "Cupcake red velvet dengan cream cheese frosting, taburan crumble red velvet.",
+    "image": "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 2,
+    "name": "Chocolate Lava Cake",
+    "slug": "chocolate-lava-cake",
+    "categoryId": 2,
+    "price": 42000,
+    "description": "Cake coklat dengan lava cair di tengah, disajikan hangat dengan vanilla ice cream.",
+    "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 3,
+    "name": "Macaron Prancis",
+    "slug": "macaron-prancis",
+    "categoryId": 3,
+    "price": 55000,
+    "description": "Macaron warna-warni autentik Prancis, renyah di luar dan lembut di dalam.",
+    "image": "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 4,
+    "name": "Mini Cheesecake",
+    "slug": "mini-cheesecake",
+    "categoryId": 2,
+    "price": 45000,
+    "description": "Cheesecake mini creamy dengan topping berry segar dan graham crumb.",
+    "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 5,
+    "name": "Donut Glazed",
+    "slug": "donut-glazed",
+    "categoryId": 4,
+    "price": 25000,
+    "description": "Donut glazed lembut dengan lapisan gula mengkilap, classic favorite.",
+    "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 6,
+    "name": "Choco Chip Cookies",
+    "slug": "choco-chip-cookies",
+    "categoryId": 3,
+    "price": 28000,
+    "description": "Cookies coklat chip homemade, renyah di luar dan chewy di dalam.",
+    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 7,
+    "name": "Brioche Bun",
+    "slug": "brioche-bun",
+    "categoryId": 4,
+    "price": 32000,
+    "description": "Brioche bun lembut dengan butter dan taburan gula mutiara.",
+    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 8,
+    "name": "Cupcake Vanilla",
+    "slug": "cupcake-vanilla",
+    "categoryId": 1,
+    "price": 30000,
+    "description": "Cupcake vanilla classic dengan buttercream dan sprinkles warna-warni.",
+    "image": "https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=600&h=600&fit=crop",
+    "featured": true,
+    "stock": true,
+    "createdAt": "2026-01-01"
+  },
+  {
+    "id": 9,
+    "name": "Cream Slice",
+    "slug": "cream-slice",
+    "categoryId": 2,
+    "price": 38000,
+    "description": "Layer cake dengan cream cheese dan vla vanilla, topping crumble.",
+    "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=600&fit=crop",
+    "featured": false,
+    "stock": true,
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": 10,
+    "name": "Bundt Cake Mini",
+    "slug": "bundt-cake-mini",
+    "categoryId": 1,
+    "price": 48000,
+    "description": "Bundt cake mini dengan cream cheese glaze dan almond slice.",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=600&fit=crop",
+    "featured": false,
+    "stock": true,
+    "createdAt": "2026-02-01"
+  }
+]

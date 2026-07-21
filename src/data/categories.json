@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Cupcake", "slug": "cupcake", "description": "Cupcake dan mini cake modern" },
+  { "id": 2, "name": "Cake", "slug": "cake", "description": "Kue slice dan dessert cake" },
+  { "id": 3, "name": "Cookies", "slug": "cookies", "description": "Cookies, macaron, dan pastry kecil" },
+  { "id": 4, "name": "Pastry", "slug": "pastry", "description": "Croissant, donut, dan brioche" },
+  { "id": 5, "name": "Snack", "slug": "snack", "description": "Camilan ringan dan roti" }
+]
