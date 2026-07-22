@@ -2,6 +2,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
+import PageTransition from '@/components/PageTransition';
 
 export const metadata = {
   title: 'SweetCake - Toko Kue Homemade',
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex flex-col">
         <ThemeProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

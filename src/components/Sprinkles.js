@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const EMOJIS = ['✨', '⭐', '🌟', '💖', '🌈', '🍭', '🎀', '🦋'];
-const COLORS = ['bg-pink-400', 'bg-purple-400', 'bg-yellow-400', 'bg-mint-400', 'bg-blue-400', 'bg-orange-400'];
 
 export default function Sprinkles({ count = 15 }) {
   const [particles, setParticles] = useState([]);
@@ -14,9 +14,8 @@ export default function Sprinkles({ count = 15 }) {
       left: Math.random() * 100,
       delay: Math.random() * 5,
       duration: 4 + Math.random() * 6,
-      size: 8 + Math.random() * 12,
+      size: 12 + Math.random() * 16,
       emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
-      isEmoji: Math.random() > 0.5,
     }));
     setParticles(items);
   }, [count]);
@@ -24,19 +23,25 @@ export default function Sprinkles({ count = 15 }) {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
       {particles.map(p => (
-        <div
+        <motion.div
           key={p.id}
-          className="absolute animate-sprinkle"
-          style={{
-            left: `${p.left}%`,
-            top: `-5%`,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
-            fontSize: `${p.size}px`,
+          className="absolute"
+          style={{ left: `${p.left}%`, fontSize: `${p.size}px` }}
+          initial={{ y: '-10vh', opacity: 1, rotate: 0 }}
+          animate={{
+            y: '110vh',
+            opacity: [1, 1, 0],
+            rotate: 720,
+          }}
+          transition={{
+            duration: p.duration,
+            delay: p.delay,
+            repeat: Infinity,
+            ease: 'linear',
           }}
         >
           {p.emoji}
-        </div>
+        </motion.div>
       ))}
     </div>
   );

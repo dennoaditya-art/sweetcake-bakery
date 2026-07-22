@@ -1,49 +1,163 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useTitle } from '@/hooks/useTitle';
+import Breadcrumb from '@/components/Breadcrumb';
+
+const reasons = [
+  { icon: '🥚', title: 'Bahan Fresh', desc: 'Telur, mentega, dan bahan segar setiap hari', color: 'from-accent to-warm' },
+  { icon: '👩‍🍳', title: 'Homemade', desc: 'Dibuat dengan tangan, bukan mesin pabrik', color: 'from-primary to-rose' },
+  { icon: '🚚', title: 'Pengiriman', desc: 'Diantar dengan hati-hati hingga ke rumah Anda', color: 'from-mint to-sky' },
+];
+
+const stagger = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.12 } },
+};
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+};
+
 export default function TentangPage() {
+  useTitle('Tentang - SweetCake');
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold text-dark mb-6">Tentang SweetCake</h1>
+    <div className="min-h-screen pt-24 pb-16">
+      {/* Hero Section */}
+      <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-dark-soft via-primary/10 to-dark-soft" />
+        <motion.div
+          className="absolute -top-20 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-blob"
+        />
+        <motion.div
+          className="absolute -bottom-20 -right-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-blob"
+          style={{ animationDelay: '3s' }}
+        />
+        <div className="relative z-10 text-center px-6 pb-16">
+          <motion.span
+            className="text-6xl mb-4 block"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 200 }}
+          >
+            🧁
+          </motion.span>
+          <motion.h1
+            className="text-5xl md:text-6xl font-bold text-white font-display mb-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Tentang SweetCake
+          </motion.h1>
+          <motion.p
+            className="text-white/60 text-lg"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            Cerita di balik setiap gigitan manis
+          </motion.p>
+        </div>
+      </div>
 
-      <div className="bg-white rounded-2xl p-8 shadow-md space-y-6">
-        <section>
-          <h2 className="text-2xl font-bold text-primary-dark mb-3">Cerita Kami</h2>
-          <p className="text-gray-700 leading-relaxed">SweetCake berdiri sejak 2020, berawal dari kecintaan kami terhadap dunia baking. Resep-resep yang kami gunakan adalah resep turun-temurun dari keluarga yang telah kami sempurnakan selama bertahun-tahun.</p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-primary-dark mb-3">Visi</h2>
-          <p className="text-gray-700 leading-relaxed">Menjadi toko kue homemade terpercaya yang menghadirkan kebahagiaan melalui setiap gigitan kue kami.</p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-primary-dark mb-3">Misi</h2>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Menggunakan bahan-bahan berkualitas terbaik tanpa pengawet</li>
-            <li>Menjaga konsistensi rasa dan kualitas produk</li>
-            <li>Memberikan pelayanan terbaik kepada setiap pelanggan</li>
-            <li>Terus berinovasi dalam menciptakan varian kue baru</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-primary-dark mb-3">Mengapa Memilih Kami?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-accent rounded-xl p-4 text-center">
-              <div className="text-3xl mb-2">🥚</div>
-              <h3 className="font-semibold">Bahan Fresh</h3>
-              <p className="text-sm text-gray-600">Telur, mentega, dan bahan segar setiap hari</p>
+      <div className="max-w-4xl mx-auto px-6 -mt-12 relative z-20">
+        <motion.div
+          className="bg-white dark:bg-card rounded-3xl p-8 md:p-10 border border-border/50 shadow-xl shadow-black/5"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Breadcrumb items={[{ label: 'Tentang' }]} />
+          <motion.div className="space-y-10 mt-6">
+          {/* Cerita Kami */}
+          <motion.section variants={fadeUp}>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-10 h-10 bg-gradient-to-br from-primary to-rose rounded-xl flex items-center justify-center text-lg">📖</span>
+              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">Cerita Kami</h2>
             </div>
-            <div className="bg-accent rounded-xl p-4 text-center">
-              <div className="text-3xl mb-2">👩‍🍳</div>
-              <h3 className="font-semibold">Homemade</h3>
-              <p className="text-sm text-gray-600">Dibuat dengan tangan, bukan mesin pabrik</p>
+            <p className="text-text-muted leading-relaxed">
+              SweetCake berdiri sejak 2020, berawal dari kecintaan kami terhadap dunia baking. Resep-resep yang kami gunakan adalah resep turun-temurun dari keluarga yang telah kami sempurnakan selama bertahun-tahun.
+            </p>
+          </motion.section>
+
+          {/* Visi */}
+          <motion.section variants={fadeUp}>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-10 h-10 bg-gradient-to-br from-accent to-warm rounded-xl flex items-center justify-center text-lg">🎯</span>
+              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">Visi</h2>
             </div>
-            <div className="bg-accent rounded-xl p-4 text-center">
-              <div className="text-3xl mb-2">🚚</div>
-              <h3 className="font-semibold">Pengiriman</h3>
-              <p className="text-sm text-gray-600">Diantar dengan hati-hati hingga ke rumah Anda</p>
+            <p className="text-text-muted leading-relaxed italic">
+              &ldquo;Menjadi toko kue homemade terpercaya yang menghadirkan kebahagiaan melalui setiap gigitan kue kami.&rdquo;
+            </p>
+          </motion.section>
+
+          {/* Misi */}
+          <motion.section variants={fadeUp}>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-10 h-10 bg-gradient-to-br from-mint to-sky rounded-xl flex items-center justify-center text-lg">⭐</span>
+              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">Misi</h2>
             </div>
-          </div>
-        </section>
+            <ul className="space-y-3">
+              {[
+                { icon: '🥚', text: 'Menggunakan bahan-bahan berkualitas terbaik tanpa pengawet' },
+                { icon: '🎂', text: 'Menjaga konsistensi rasa dan kualitas produk' },
+                { icon: '💝', text: 'Memberikan pelayanan terbaik kepada setiap pelanggan' },
+                { icon: '✨', text: 'Terus berinovasi dalam menciptakan varian kue baru' },
+              ].map((item, i) => (
+                <motion.li
+                  key={i}
+                  className="flex items-center gap-3 text-text-muted"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-sm shrink-0">
+                    {item.icon}
+                  </span>
+                  {item.text}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.section>
+
+          {/* Mengapa Memilih Kami */}
+          <motion.section variants={fadeUp}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-10 h-10 bg-gradient-to-br from-secondary to-lavender rounded-xl flex items-center justify-center text-lg">💪</span>
+              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">Mengapa Memilih Kami?</h2>
+            </div>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-4"
+              variants={stagger}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
+              {reasons.map((r, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className={`bg-gradient-to-br ${r.color} p-6 rounded-2xl text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
+                >
+                  <motion.div
+                    className="text-4xl mb-3"
+                    whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {r.icon}
+                  </motion.div>
+                  <h3 className="font-bold text-dark text-base font-display">{r.title}</h3>
+                  <p className="text-sm text-dark/60 mt-1">{r.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.section>
+        </motion.div>
+        </motion.div>
       </div>
     </div>
   );

@@ -2,13 +2,29 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTitle } from '@/hooks/useTitle';
+import Breadcrumb from '@/components/Breadcrumb';
+
+const stagger = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.06 } },
+};
+
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
 
 export default function KeranjangPage() {
+  useTitle('Keranjang - SweetCake');
   const [cart, setCart] = useState([]);
+  const [exitingItems, setExitingItems] = useState([]);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('cart') || '[]');
     setCart(stored);
+    if (stored.length === 0) setShowEmpty(true);
   }, []);
 
   const updateCart = newCart => {
@@ -18,6 +34,7 @@ export default function KeranjangPage() {
   };
 
   const changeQty = (id, delta) => {
+    if (cart.length === 0) return;
     const newCart = cart.map(item => {
       if (item.id === id) {
         const qty = Math.max(1, item.qty + delta);
@@ -28,52 +45,187 @@ export default function KeranjangPage() {
     updateCart(newCart);
   };
 
+  const [showEmpty, setShowEmpty] = useState(false);
+
   const removeItem = id => {
-    updateCart(cart.filter(item => item.id !== id));
+    const newCart = cart.filter(item => item.id !== id);
+    if (newCart.length === 0) {
+      setExitingItems(cart);
+      updateCart(newCart);
+      setTimeout(() => {
+        setExitingItems([]);
+        setShowEmpty(true);
+      }, 400);
+    } else {
+      updateCart(newCart);
+    }
   };
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const displayCart = cart.length > 0 || exitingItems.length > 0
+    ? (cart.length > 0 ? cart : exitingItems)
+    : [];
 
-  if (cart.length === 0) {
+  const total = displayCart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  if (cart.length === 0 && showEmpty) {
     return (
-      <div className="max-w-4xl mx-auto px-6 py-20 text-center">
-        <div className="text-6xl mb-4">🛒</div>
-        <h1 className="text-3xl font-bold text-dark mb-4">Keranjang Belanja</h1>
-        <p className="text-gray-500 mb-8">Keranjang Anda masih kosong. Yuk, belanja!</p>
-        <Link href="/katalog" className="bg-primary text-dark font-bold px-8 py-3 rounded-lg hover:bg-primary-dark transition">Mulai Belanja</Link>
+      <div className="min-h-screen flex items-center justify-center px-6">
+        <motion.div
+          className="text-center max-w-md"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <motion.div
+            className="relative inline-block mb-8"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <div className="w-28 h-28 bg-gradient-to-br from-primary/20 via-accent/10 to-rose/20 rounded-full mx-auto flex items-center justify-center">
+              <motion.span
+                className="text-6xl"
+                animate={{ rotate: [0, -10, 10, 0], scale: [1, 1.1, 1] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                🛒
+              </motion.span>
+            </div>
+            <motion.div
+              className="absolute -top-2 -right-2 text-2xl"
+              animate={{ y: [0, -8, 0], rotate: [0, -15, 15, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            >
+              🧁
+            </motion.div>
+            <motion.div
+              className="absolute -bottom-1 -left-3 text-xl"
+              animate={{ y: [0, 8, 0], rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            >
+              ✨
+            </motion.div>
+          </motion.div>
+
+          <h1 className="text-3xl font-bold text-dark dark:text-white mb-3 font-display">
+            Keranjang Masih Kosong
+          </h1>
+          <p className="text-text-muted mb-2">
+            Belum ada kue yang dipilih. Yuk, jelajahi koleksi kami!
+          </p>
+          <p className="text-text-muted text-sm mb-8">
+            Kami siap manjain lidahmu dengan kue homemade terbaik 🎂
+          </p>
+
+          <div className="flex flex-col items-center gap-3">
+            <Link
+              href="/katalog"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-rose text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
+            >
+              Mulai Belanja
+            </Link>
+            <Link
+              href="/tentang"
+              className="text-sm text-text-muted hover:text-primary transition-colors"
+            >
+              Kenali SweetCake dulu →
+            </Link>
+          </div>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold text-dark mb-8">Keranjang Belanja</h1>
-
-      <div className="space-y-4">
-        {cart.map(item => (
-          <div key={item.id} className="bg-white rounded-xl p-4 flex items-center gap-4 shadow-md">
-            <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center text-2xl">🍰</div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-dark">{item.name}</h3>
-              <p className="text-primary-dark font-bold">Rp {item.price.toLocaleString('id-ID')}</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={() => changeQty(item.id, -1)} className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 font-bold">−</button>
-              <span className="w-8 text-center font-medium">{item.qty}</span>
-              <button onClick={() => changeQty(item.id, 1)} className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 font-bold">+</button>
-            </div>
-            <p className="font-bold text-dark w-24 text-right">Rp {(item.price * item.qty).toLocaleString('id-ID')}</p>
-            <button onClick={() => removeItem(item.id)} className="text-red-500 hover:text-red-700 font-bold">✕</button>
-          </div>
-        ))}
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="relative mb-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-rose/5 h-40 -z-10" />
+        <div className="max-w-4xl mx-auto px-6 pt-8 pb-8">
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-dark dark:text-white font-display"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            Keranjang Belanja
+          </motion.h1>
+        </div>
       </div>
 
-      <div className="bg-white rounded-xl p-6 mt-6 shadow-md flex flex-col md:flex-row justify-between items-center gap-4">
-        <div>
-          <p className="text-gray-600">Total Belanja</p>
-          <p className="text-3xl font-bold text-primary-dark">Rp {total.toLocaleString('id-ID')}</p>
-        </div>
-        <Link href="/checkout" className="bg-primary text-dark font-bold px-8 py-3 rounded-lg hover:bg-primary-dark transition text-lg">Lanjut ke Checkout</Link>
+      <div className="max-w-4xl mx-auto px-6">
+        <Breadcrumb items={[{ label: 'Keranjang' }]} />
+
+        <motion.div
+          className="space-y-4"
+          variants={stagger}
+          initial="initial"
+          animate="animate"
+        >
+          <AnimatePresence>
+            {displayCart.map(item => (
+              <motion.div
+                key={item.id}
+                variants={fadeUp}
+                layout
+                exit={{ opacity: 0, x: 100, height: 0 }}
+                className="bg-white dark:bg-card rounded-2xl p-4 flex items-center gap-4 border border-border/50 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-rose/10 flex items-center justify-center text-2xl shrink-0">
+                  🍰
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-dark dark:text-white truncate">{item.name}</h3>
+                  <p className="text-primary font-bold text-sm">Rp {item.price.toLocaleString('id-ID')}</p>
+                </div>
+                <div className="flex items-center gap-1 bg-white dark:bg-card border border-border rounded-xl">
+                  <motion.button
+                    onClick={() => changeQty(item.id, -1)}
+                    className="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-primary/10 text-text font-bold transition-colors"
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    −
+                  </motion.button>
+                  <span className="w-8 text-center font-bold text-text text-sm">{item.qty}</span>
+                  <motion.button
+                    onClick={() => changeQty(item.id, 1)}
+                    className="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-primary/10 text-text font-bold transition-colors"
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    +
+                  </motion.button>
+                </div>
+                <p className="font-bold text-dark dark:text-white w-24 text-right text-sm">
+                  Rp {(item.price * item.qty).toLocaleString('id-ID')}
+                </p>
+                <motion.button
+                  onClick={() => removeItem(item.id)}
+                  className="w-9 h-9 rounded-xl flex items-center justify-center text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 transition-all"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  ✕
+                </motion.button>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        <motion.div
+          className="mt-8 bg-white dark:bg-card rounded-2xl p-6 border border-border/50 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <div>
+            <p className="text-text-muted text-sm">Total Belanja</p>
+            <p className="text-3xl md:text-4xl font-bold text-primary font-display">
+              Rp {total.toLocaleString('id-ID')}
+            </p>
+          </div>
+          <Link
+            href="/checkout"
+            className="w-full md:w-auto bg-gradient-to-r from-primary to-rose text-white font-bold px-10 py-3.5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all text-lg text-center"
+          >
+            Lanjut ke Checkout →
+          </Link>
+        </motion.div>
       </div>
     </div>
   );
