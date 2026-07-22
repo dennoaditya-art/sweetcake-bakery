@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { SkeletonText, SkeletonAvatar } from '@/components/Skeleton';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -16,7 +17,7 @@ const cardStyles = [
 const quotes = ['“', '”', '„', '‟'];
 
 export default function TestimoniPage() {
-  useTitle('Testimoni - SweetCake');
+  useTitle(`Testimoni - ${siteConfig.name}`);
   const [testimonials, setTestimonials] = useState([]);
   const [form, setForm] = useState({ name: '', rating: 5, message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -77,7 +78,7 @@ export default function TestimoniPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Testimoni Pelanggan
+            {siteConfig.testimoniPage.title}
           </motion.h1>
 
           <motion.p
@@ -86,7 +87,7 @@ export default function TestimoniPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Apa kata mereka tentang kue-kue kami
+            {siteConfig.testimoniPage.subtitle}
           </motion.p>
 
           <motion.div
@@ -97,17 +98,17 @@ export default function TestimoniPage() {
           >
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-dark dark:text-white font-display">{testimonials.length}</p>
-              <p className="text-xs text-text-muted mt-1">Total Testimoni</p>
+              <p className="text-xs text-text-muted mt-1">{siteConfig.testimoniPage.stats.totalLabel}</p>
             </div>
             <div className="w-px h-10 bg-border" />
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-accent font-display">{avgRating}</p>
-              <p className="text-xs text-text-muted mt-1">Rata-rata Rating</p>
+              <p className="text-xs text-text-muted mt-1">{siteConfig.testimoniPage.stats.avgLabel}</p>
             </div>
             <div className="w-px h-10 bg-border" />
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-primary font-display">⭐</p>
-              <p className="text-xs text-text-muted mt-1">5.0 Tertinggi</p>
+              <p className="text-xs text-text-muted mt-1">{siteConfig.testimoniPage.stats.highestLabel}</p>
             </div>
           </motion.div>
         </div>
@@ -219,7 +220,7 @@ export default function TestimoniPage() {
             </div>
             <div>
               <h2 className="text-xl font-bold text-dark dark:text-white font-display">Tulis Testimoni</h2>
-              <p className="text-xs text-text-muted">Bagikan pengalaman kamu dengan SweetCake</p>
+              <p className="text-xs text-text-muted">Bagikan pengalaman kamu dengan {siteConfig.name}</p>
             </div>
           </div>
 

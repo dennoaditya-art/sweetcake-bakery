@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { SkeletonCard } from '@/components/Skeleton';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
 
 export default function GaleriPage() {
-  useTitle('Galeri - SweetCake');
+  useTitle(`Galeri - ${siteConfig.name}`);
   const [gallery, setGallery] = useState([]);
   const [lightbox, setLightbox] = useState(null);
 
@@ -25,7 +26,7 @@ export default function GaleriPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Galeri Foto
+            {siteConfig.galeriPage.title}
           </motion.h1>
           <motion.p
             className="text-text-muted"
@@ -33,7 +34,7 @@ export default function GaleriPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Lihat hasil karya kue kami
+            {siteConfig.galeriPage.subtitle}
           </motion.p>
         </div>
       </div>
@@ -129,7 +130,7 @@ export default function GaleriPage() {
                 <div className="p-6 flex items-center justify-between">
                   <div>
                     <h3 className="text-xl font-bold text-dark dark:text-white font-display">{lightbox.caption}</h3>
-                    <p className="text-text-muted text-sm mt-1">Koleksi SweetCake</p>
+                    <p className="text-text-muted text-sm mt-1">Koleksi {siteConfig.name}</p>
                   </div>
                   <motion.button
                     onClick={() => setLightbox(null)}

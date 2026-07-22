@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { SkeletonCard, SkeletonText } from '@/components/Skeleton';
 import { useTitle } from '@/hooks/useTitle';
 
 export default function DetailProdukPage() {
-  useTitle('Detail - SweetCake');
+  useTitle(`Detail - ${siteConfig.name}`);
   const { id } = useParams();
   const router = useRouter();
   const [product, setProduct] = useState(null);

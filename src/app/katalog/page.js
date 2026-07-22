@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { SkeletonCard } from '@/components/Skeleton';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -27,7 +28,7 @@ const categoryGradients = [
 ];
 
 function KatalogContent() {
-  useTitle('Katalog - SweetCake');
+  useTitle(`Katalog - ${siteConfig.name}`);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState('');
@@ -59,7 +60,7 @@ function KatalogContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Katalog Produk
+            {siteConfig.katalogPage.title}
           </motion.h1>
           <motion.p
             className="text-text-muted"
@@ -67,7 +68,7 @@ function KatalogContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Pilih kue favoritmu dari koleksi kami
+            {siteConfig.katalogPage.subtitle}
           </motion.p>
         </div>
       </div>

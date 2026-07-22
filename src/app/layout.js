@@ -1,3 +1,4 @@
+import { siteConfig } from '@/lib/config';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -5,8 +6,8 @@ import ThemeProvider from '@/components/ThemeProvider';
 import PageTransition from '@/components/PageTransition';
 
 export const metadata = {
-  title: 'SweetCake - Toko Kue Homemade',
-  description: 'Toko kue homemade dengan cita rasa istimewa. Bolu, cake, kue kering, dan roti segar setiap hari.',
+  title: `${siteConfig.name} - ${siteConfig.tagline}`,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({ children }) {

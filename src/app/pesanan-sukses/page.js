@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
 
 export default function PesananSuksesPage() {
-  useTitle('Pesanan Berhasil - SweetCake');
+  useTitle(`${siteConfig.pesananSuksesPage.title} - ${siteConfig.name}`);
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
       <motion.div
@@ -28,11 +29,11 @@ export default function PesananSuksesPage() {
         </motion.div>
 
         <h1 className="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-4 font-display">
-          Pesanan Berhasil!
+          {siteConfig.pesananSuksesPage.title}
         </h1>
 
         <p className="text-text-muted mb-8 leading-relaxed">
-          Terima kasih! Pesanan Anda telah kami terima. Kami akan segera menghubungi Anda untuk konfirmasi.
+          {siteConfig.pesananSuksesPage.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">
@@ -40,13 +41,13 @@ export default function PesananSuksesPage() {
             href="/"
             className="bg-gradient-to-r from-primary to-rose text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
           >
-            Kembali ke Beranda
+            {siteConfig.pesananSuksesPage.cta}
           </Link>
           <Link
             href="/katalog"
             className="bg-dark dark:bg-white text-white dark:text-dark font-bold px-8 py-3 rounded-xl hover:opacity-90 transition-all"
           >
-            Belanja Lagi
+            {siteConfig.pesananSuksesPage.secondaryCta}
           </Link>
         </div>
       </motion.div>

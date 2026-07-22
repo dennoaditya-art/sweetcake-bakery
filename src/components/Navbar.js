@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
+import { siteConfig } from '@/lib/config';
 
 export default function Navbar() {
   const [cartCount, setCartCount] = useState(0);
@@ -33,39 +34,26 @@ export default function Navbar() {
   if (isAdmin) {
     return (
       <nav className="bg-dark text-white px-6 py-3 flex items-center justify-between shadow-md">
-        <Link href="/admin" className="text-xl font-bold font-display">SweetCake Admin</Link>
+        <Link href="/admin" className="text-xl font-bold font-display">{siteConfig.name} Admin</Link>
         <div className="hidden md:flex gap-4 text-sm">
-          {[
-            { href: '/admin', label: 'Dashboard' },
-            { href: '/admin/produk', label: 'Produk' },
-            { href: '/admin/kategori', label: 'Kategori' },
-            { href: '/admin/pesanan', label: 'Pesanan' },
-            { href: '/admin/testimoni', label: 'Testimoni' },
-            { href: '/admin/galeri', label: 'Galeri' },
-          ].map(link => (
+          {siteConfig.admin.nav.map(link => (
             <Link
               key={link.href}
               href={link.href}
               className="hover:text-primary transition"
             >
-              {link.label}
+              {link.icon} {link.label}
             </Link>
           ))}
           <Link href="/" className="hover:text-primary ml-4 border-l border-white/20 pl-4 transition">
-            Lihat Toko
+            {siteConfig.admin.viewStore}
           </Link>
         </div>
       </nav>
     );
   }
 
-  const links = [
-    { href: '/', label: 'Beranda' },
-    { href: '/katalog', label: 'Katalog' },
-    { href: '/galeri', label: 'Galeri' },
-    { href: '/testimoni', label: 'Testimoni' },
-    { href: '/tentang', label: 'Tentang' },
-  ];
+  const links = siteConfig.nav.links;
 
   return (
     <motion.nav
@@ -90,7 +78,7 @@ export default function Navbar() {
           <span className={`text-lg font-bold tracking-tight font-display ${
             scrolled ? 'text-dark dark:text-white' : 'text-white'
           }`}>
-            SweetCake
+            {siteConfig.name}
           </span>
         </Link>
 

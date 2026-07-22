@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
 
 export default function CheckoutPage() {
-  useTitle('Checkout - SweetCake');
+  useTitle(`Checkout - ${siteConfig.name}`);
   const router = useRouter();
   const [cart, setCart] = useState([]);
   const [form, setForm] = useState({ name: '', phone: '', address: '', notes: '' });
@@ -36,7 +37,7 @@ export default function CheckoutPage() {
       window.dispatchEvent(new Event('cartUpdated'));
       router.push('/pesanan-sukses');
     } catch {
-      alert('Gagal memproses pesanan. Silakan coba lagi.');
+      alert(siteConfig.checkoutPage.errorMessage);
       setSubmitting(false);
     }
   };
@@ -51,7 +52,7 @@ export default function CheckoutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Checkout
+            {siteConfig.checkoutPage.title}
           </motion.h1>
         </div>
       </div>
@@ -69,11 +70,11 @@ export default function CheckoutPage() {
             >
               <h2 className="text-xl font-bold text-dark dark:text-white font-display flex items-center gap-2">
                 <span className="w-8 h-8 bg-gradient-to-br from-primary to-rose rounded-lg flex items-center justify-center text-sm">📝</span>
-                Data Pemesan
+                {siteConfig.checkoutPage.formTitle}
               </h2>
 
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Nama Lengkap</label>
+                <label className="block text-sm font-medium text-text mb-1.5">{siteConfig.checkoutPage.formNameLabel}</label>
                 <input
                   type="text"
                   placeholder="Masukkan nama..."
@@ -85,7 +86,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">No. Telepon</label>
+                <label className="block text-sm font-medium text-text mb-1.5">{siteConfig.checkoutPage.formPhoneLabel}</label>
                 <input
                   type="tel"
                   placeholder="08xx-xxxx-xxxx"
@@ -97,7 +98,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Alamat Lengkap</label>
+                <label className="block text-sm font-medium text-text mb-1.5">{siteConfig.checkoutPage.formAddressLabel}</label>
                 <textarea
                   placeholder="Jalan, nomor rumah, kota, kode pos..."
                   required
@@ -108,7 +109,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Catatan (opsional)</label>
+                <label className="block text-sm font-medium text-text mb-1.5">{siteConfig.checkoutPage.formNotesLabel}</label>
                 <textarea
                   placeholder="Tambahan pesanan..."
                   value={form.notes}
@@ -126,7 +127,7 @@ export default function CheckoutPage() {
             >
               <h2 className="text-xl font-bold text-dark dark:text-white font-display flex items-center gap-2">
                 <span className="w-8 h-8 bg-gradient-to-br from-accent to-warm rounded-lg flex items-center justify-center text-sm">📋</span>
-                Ringkasan Pesanan
+                {siteConfig.checkoutPage.summaryTitle}
               </h2>
 
               <div className="space-y-3">
@@ -145,7 +146,7 @@ export default function CheckoutPage() {
 
               <div className="pt-3 border-t border-border/50">
                 <div className="flex justify-between items-center">
-                  <p className="text-base font-bold text-dark dark:text-white">Total</p>
+                  <p className="text-base font-bold text-dark dark:text-white">{siteConfig.checkoutPage.totalLabel}</p>
                   <p className="text-2xl font-bold text-primary font-display">Rp {total.toLocaleString('id-ID')}</p>
                 </div>
               </div>
@@ -164,10 +165,10 @@ export default function CheckoutPage() {
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                     />
-                    Memproses...
+                    {siteConfig.checkoutPage.submittingLabel}
                   </span>
                 ) : (
-                  'Buat Pesanan'
+                  siteConfig.checkoutPage.submitLabel
                 )}
               </motion.button>
             </motion.div>

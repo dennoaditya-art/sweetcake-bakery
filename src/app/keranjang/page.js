@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -17,7 +18,7 @@ const fadeUp = {
 };
 
 export default function KeranjangPage() {
-  useTitle('Keranjang - SweetCake');
+  useTitle(`Keranjang - ${siteConfig.name}`);
   const [cart, setCart] = useState([]);
   const [exitingItems, setExitingItems] = useState([]);
 
@@ -106,13 +107,13 @@ export default function KeranjangPage() {
           </motion.div>
 
           <h1 className="text-3xl font-bold text-dark dark:text-white mb-3 font-display">
-            Keranjang Masih Kosong
+            {siteConfig.keranjangPage.emptyTitle}
           </h1>
           <p className="text-text-muted mb-2">
-            Belum ada kue yang dipilih. Yuk, jelajahi koleksi kami!
+            {siteConfig.keranjangPage.emptySubtitle}
           </p>
           <p className="text-text-muted text-sm mb-8">
-            Kami siap manjain lidahmu dengan kue homemade terbaik 🎂
+            {siteConfig.keranjangPage.emptySubtitle2}
           </p>
 
           <div className="flex flex-col items-center gap-3">
@@ -120,13 +121,13 @@ export default function KeranjangPage() {
               href="/katalog"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-rose text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
             >
-              Mulai Belanja
+              {siteConfig.keranjangPage.emptyCta}
             </Link>
             <Link
               href="/tentang"
               className="text-sm text-text-muted hover:text-primary transition-colors"
             >
-              Kenali SweetCake dulu →
+              {siteConfig.keranjangPage.emptySecondaryCta} →
             </Link>
           </div>
         </motion.div>
@@ -144,7 +145,7 @@ export default function KeranjangPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Keranjang Belanja
+            {siteConfig.keranjangPage.title}
           </motion.h1>
         </div>
       </div>
@@ -214,7 +215,7 @@ export default function KeranjangPage() {
           transition={{ delay: 0.3 }}
         >
           <div>
-            <p className="text-text-muted text-sm">Total Belanja</p>
+            <p className="text-text-muted text-sm">{siteConfig.keranjangPage.totalLabel}</p>
             <p className="text-3xl md:text-4xl font-bold text-primary font-display">
               Rp {total.toLocaleString('id-ID')}
             </p>
@@ -223,7 +224,7 @@ export default function KeranjangPage() {
             href="/checkout"
             className="w-full md:w-auto bg-gradient-to-r from-primary to-rose text-white font-bold px-10 py-3.5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all text-lg text-center"
           >
-            Lanjut ke Checkout →
+            {siteConfig.keranjangPage.checkoutCta} →
           </Link>
         </motion.div>
       </div>

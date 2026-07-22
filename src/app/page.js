@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import Sprinkles from '@/components/Sprinkles';
 import CakeMood from '@/components/CakeMood';
 import ParallaxSection from '@/components/ParallaxSection';
@@ -93,7 +94,7 @@ export default function HomePage() {
                 >
                   <div className="inline-flex items-center gap-2 glass text-white/90 px-4 py-2 rounded-full text-sm font-medium mb-6">
                     <span className="w-2 h-2 bg-accent rounded-full animate-pulse-soft" />
-                    Homemade dengan Cinta
+                    {siteConfig.hero.badge}
                   </div>
                 </motion.div>
 
@@ -103,10 +104,10 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  Manisnya
+                  {siteConfig.hero.title}
                   <br />
                   <span className="bg-gradient-to-r from-accent via-primary to-rose bg-clip-text text-transparent">
-                    Kebahagiaan
+                    {siteConfig.hero.titleHighlight}
                   </span>
                 </motion.h1>
 
@@ -116,7 +117,7 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  Setiap gigitan adalah cerita. Kue homemade dengan cinta dan bahan terbaik untuk momen berharga Anda.
+                  {siteConfig.hero.subtitle}
                 </motion.p>
 
                 <motion.div
@@ -129,7 +130,7 @@ export default function HomePage() {
                     href="/katalog"
                     className="group bg-gradient-to-r from-primary to-coral text-white font-bold px-8 py-3.5 rounded-full hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 text-base inline-flex items-center gap-2"
                   >
-                    Jelajahi Katalog
+                    {siteConfig.hero.cta}
                     <motion.span
                       className="inline-block"
                       animate={{ x: [0, 5, 0] }}
@@ -142,7 +143,7 @@ export default function HomePage() {
                     href="/tentang"
                     className="glass text-white/80 font-semibold px-8 py-3.5 rounded-full hover:bg-white/20 hover:text-white transition-all duration-300 text-base"
                   >
-                    Cerita Kami
+                    {siteConfig.nav.links.find(l => l.href === '/tentang')?.label || 'Cerita Kami'}
                   </Link>
                 </motion.div>
 
@@ -166,7 +167,7 @@ export default function HomePage() {
                     ))}
                   </div>
                   <p className="text-white/50 text-sm">
-                    Dicintai <span className="text-white/80 font-semibold">2.500+</span> pelanggan
+                    {siteConfig.hero.socialProof.replace('{count}', siteConfig.hero.socialProofCount)}
                   </p>
                 </motion.div>
               </div>
@@ -286,7 +287,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Lagi <span className="bg-gradient-to-r from-accent via-primary to-rose bg-clip-text text-transparent">Mood</span> Apa?
+              {siteConfig.moodSection.title}<span className="bg-gradient-to-r from-accent via-primary to-rose bg-clip-text text-transparent">{siteConfig.moodSection.titleHighlight}</span>?
             </motion.h2>
             <motion.p
               className="text-white/70 max-w-md mx-auto text-sm"
@@ -295,7 +296,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Kami bacain perasaanmu, kita cocokin sama kue yang paling pas
+              {siteConfig.moodSection.subtitle}
             </motion.p>
           </div>
 
@@ -327,10 +328,10 @@ export default function HomePage() {
                 🎂
               </motion.span>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 font-display text-shadow">
-                Kategori Pilihan
+                {siteConfig.categoriesSection.title}
               </h2>
               <p className="text-white/60 max-w-md mx-auto">
-                Jelajahi berbagai jenis kue yang kami buat dengan penuh cinta
+                {siteConfig.categoriesSection.subtitle}
               </p>
             </div>
           </Reveal>
@@ -343,7 +344,7 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             {categories.map((cat, i) => {
-              const emojis = ['🎂', '🍪', '🍰', '🥖', '🧋'];
+              const emojis = siteConfig.categoryEmojis;
               const colors = [
                 'from-primary/20 to-rose/20 border-primary/30',
                 'from-accent/20 to-warm/20 border-accent/30',
@@ -406,10 +407,10 @@ export default function HomePage() {
           <Reveal>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 font-display text-shadow">
-                Produk Unggulan
+                {siteConfig.productsSection.title}
               </h2>
               <p className="text-white/60 max-w-md mx-auto">
-                Paling laris dan banyak dicintai
+                {siteConfig.productsSection.subtitle}
               </p>
             </div>
           </Reveal>
@@ -417,7 +418,7 @@ export default function HomePage() {
           {products.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl">
               {products.slice(0, 8).map((product, i) => {
-                const badges = ['🔥 Best Seller', '⭐ Most Loved', '✨ New', '💖 Popular'];
+                const badges = siteConfig.productBadges;
                 const gradients = [
                   'from-primary/20 to-rose/10',
                   'from-accent/20 to-warm/10',
@@ -516,10 +517,10 @@ export default function HomePage() {
                 📸
               </motion.div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 font-display text-shadow">
-                Feed Instagram
+                {siteConfig.instagramSection.title}
               </h2>
               <p className="text-white/80">
-                Ikuti <span className="text-accent font-bold">@sweetcake_id</span> untuk update manis setiap hari
+                {siteConfig.instagramSection.subtitle.replace('{handle}', siteConfig.social.instagramHandle)}
               </p>
             </div>
           </Reveal>
@@ -531,12 +532,7 @@ export default function HomePage() {
             whileInView="whileInView"
             viewport={{ once: true }}
           >
-            {[
-              { emoji: '🎂', caption: 'Red velvet cake fresh dari oven!', likes: 234 },
-              { emoji: '🍰', caption: 'Bolu lapis spesial akhir pekan', likes: 189 },
-              { emoji: '🍪', caption: 'Nastar keju lumer di mulut', likes: 312 },
-              { emoji: '🧁', caption: 'Cupcake pelangi untuk si kecil', likes: 156 },
-            ].map((post, i) => (
+            {siteConfig.instagramSection.posts.map((post, i) => (
               <motion.div
                 key={i}
                 variants={staggerItem}
@@ -574,7 +570,7 @@ export default function HomePage() {
               >
                 📱
               </motion.span>
-              Ikuti @sweetcake_id
+              {siteConfig.instagramSection.cta.replace('{handle}', siteConfig.social.instagramHandle)}
             </a>
           </Reveal>
         </div>
@@ -597,10 +593,10 @@ export default function HomePage() {
                 💬
               </motion.span>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 font-display text-shadow">
-                Kata Mereka
+                {siteConfig.testimonialsSection.title}
               </h2>
               <p className="text-white/60 max-w-md mx-auto">
-                Yang sudah cobain, pada suka semua!
+                {siteConfig.testimonialsSection.subtitle}
               </p>
             </div>
           </Reveal>
@@ -647,20 +643,19 @@ export default function HomePage() {
                 animate={{ y: [0, -8, 0], rotate: [0, -5, 5, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               >
-                🧁
+                {siteConfig.ctaSection.emoji}
               </motion.span>
             </Reveal>
 
             <Reveal delay={0.1}>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-display leading-tight text-shadow-lg">
-                Siap Manjain Lidah?
+                {siteConfig.ctaSection.title}
               </h2>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="text-white/60 text-lg mb-10 max-w-md mx-auto leading-relaxed">
-                Pesan sekarang dan nikmati kue homemade fresh dari dapur kami.
-                Setiap pemesanan dibuat dengan cinta khusus untukmu.
+                {siteConfig.ctaSection.subtitle}
               </p>
             </Reveal>
 
@@ -675,15 +670,15 @@ export default function HomePage() {
                     transition={{ duration: 2, repeat: Infinity }}
                     className="inline-block"
                   >
-                    🛒
+                    {siteConfig.ctaSection.ctaIcon}
                   </motion.span>
-                  Mulai Belanja
+                  {siteConfig.ctaSection.cta}
                 </Link>
                 <Link
                   href="/tentang"
                   className="glass text-white/80 font-semibold px-8 py-3.5 rounded-full hover:bg-white/20 hover:text-white transition-all duration-300 text-base"
                 >
-                  📞 Hubungi Kami
+                  {siteConfig.ctaSection.secondaryCtaIcon} {siteConfig.ctaSection.secondaryCta}
                 </Link>
               </div>
             </Reveal>

@@ -1,14 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/lib/config';
 import { useTitle } from '@/hooks/useTitle';
 import Breadcrumb from '@/components/Breadcrumb';
-
-const reasons = [
-  { icon: '🥚', title: 'Bahan Fresh', desc: 'Telur, mentega, dan bahan segar setiap hari', color: 'from-accent to-warm' },
-  { icon: '👩‍🍳', title: 'Homemade', desc: 'Dibuat dengan tangan, bukan mesin pabrik', color: 'from-primary to-rose' },
-  { icon: '🚚', title: 'Pengiriman', desc: 'Diantar dengan hati-hati hingga ke rumah Anda', color: 'from-mint to-sky' },
-];
 
 const stagger = {
   initial: {},
@@ -22,7 +17,7 @@ const fadeUp = {
 };
 
 export default function TentangPage() {
-  useTitle('Tentang - SweetCake');
+  useTitle(`Tentang - ${siteConfig.name}`);
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
@@ -50,7 +45,7 @@ export default function TentangPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Tentang SweetCake
+            {siteConfig.aboutPage.title}
           </motion.h1>
           <motion.p
             className="text-white/60 text-lg"
@@ -58,7 +53,7 @@ export default function TentangPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            Cerita di balik setiap gigitan manis
+            {siteConfig.aboutPage.subtitle}
           </motion.p>
         </div>
       </div>
@@ -76,10 +71,10 @@ export default function TentangPage() {
           <motion.section variants={fadeUp}>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-10 h-10 bg-gradient-to-br from-primary to-rose rounded-xl flex items-center justify-center text-lg">📖</span>
-              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">Cerita Kami</h2>
+              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">{siteConfig.aboutPage.story.title}</h2>
             </div>
             <p className="text-text-muted leading-relaxed">
-              SweetCake berdiri sejak 2020, berawal dari kecintaan kami terhadap dunia baking. Resep-resep yang kami gunakan adalah resep turun-temurun dari keluarga yang telah kami sempurnakan selama bertahun-tahun.
+              {siteConfig.aboutPage.story.content}
             </p>
           </motion.section>
 
@@ -87,10 +82,10 @@ export default function TentangPage() {
           <motion.section variants={fadeUp}>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-10 h-10 bg-gradient-to-br from-accent to-warm rounded-xl flex items-center justify-center text-lg">🎯</span>
-              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">Visi</h2>
+              <h2 className="text-2xl font-bold text-dark dark:text-white font-display">{siteConfig.aboutPage.vision.title}</h2>
             </div>
             <p className="text-text-muted leading-relaxed italic">
-              &ldquo;Menjadi toko kue homemade terpercaya yang menghadirkan kebahagiaan melalui setiap gigitan kue kami.&rdquo;
+              &ldquo;{siteConfig.aboutPage.vision.content}&rdquo;
             </p>
           </motion.section>
 
@@ -137,7 +132,7 @@ export default function TentangPage() {
               whileInView="whileInView"
               viewport={{ once: true }}
             >
-              {reasons.map((r, i) => (
+              {siteConfig.aboutReasons.map((r, i) => (
                 <motion.div
                   key={i}
                   variants={fadeUp}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { siteConfig } from '@/lib/config';
 
 export default function Footer() {
   return (
@@ -13,10 +14,10 @@ export default function Footer() {
               <span className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-lg shadow-md group-hover:scale-105 transition-transform">
                 🧁
               </span>
-              <span className="text-lg font-bold text-white font-display">SweetCake</span>
+              <span className="text-lg font-bold text-white font-display">{siteConfig.name}</span>
             </Link>
             <p className="text-sm leading-relaxed max-w-md text-white/50">
-              Toko kue homemade dengan resep turun-temurun. Kami menghadirkan kue berkualitas dengan cita rasa istimewa untuk setiap momen spesial Anda. Dibuat dengan cinta dari bahan-bahan terbaik.
+              {siteConfig.footer.description}
             </p>
             <div className="flex gap-3 mt-5">
               {['🍰', '🧁', '🍪', '🎂'].map((emoji, i) => (
@@ -30,13 +31,7 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4 font-display text-sm uppercase tracking-wider">Menu</h4>
             <ul className="space-y-3 text-sm">
-              {[
-                { href: '/', label: 'Beranda' },
-                { href: '/katalog', label: 'Katalog' },
-                { href: '/galeri', label: 'Galeri' },
-                { href: '/testimoni', label: 'Testimoni' },
-                { href: '/tentang', label: 'Tentang' },
-              ].map(link => (
+              {siteConfig.footer.quickLinks.map(link => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block">
                     {link.label}
@@ -49,22 +44,21 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4 font-display text-sm uppercase tracking-wider">Kontak</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">📍 <span>Jl. Merdeka No. 123</span></li>
-              <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">📞 <span>0812-3456-7890</span></li>
-              <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">✉️ <span>hello@sweetcake.com</span></li>
+              <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">📍 <span>{siteConfig.contact.address}</span></li>
+              <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">📞 <span>{siteConfig.contact.phone}</span></li>
+              <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">✉️ <span>{siteConfig.contact.email}</span></li>
               <li className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors">🕐 <span>Sen-Sab: 08.00 - 20.00</span></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
-          <p>&copy; 2026 SweetCake. All rights reserved.</p>
+          <p>{siteConfig.footer.copyright.replace('{year}', '2026').replace('{name}', siteConfig.name)}</p>
           <div className="flex gap-6">
-            {['Instagram', 'TikTok', 'Shopee', 'GoFood'].map(social => (
-              <span key={social} className="hover:text-primary cursor-pointer transition-colors duration-300 tracking-wider uppercase text-[10px]">
-                {social}
-              </span>
-            ))}
+            <span className="hover:text-primary cursor-pointer transition-colors duration-300 tracking-wider uppercase text-[10px]">Instagram</span>
+            <span className="hover:text-primary cursor-pointer transition-colors duration-300 tracking-wider uppercase text-[10px]">TikTok</span>
+            <span className="hover:text-primary cursor-pointer transition-colors duration-300 tracking-wider uppercase text-[10px]">Shopee</span>
+            <span className="hover:text-primary cursor-pointer transition-colors duration-300 tracking-wider uppercase text-[10px]">GoFood</span>
           </div>
         </div>
       </div>
