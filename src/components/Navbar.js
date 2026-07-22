@@ -132,11 +132,11 @@ export default function Navbar() {
         </div>
 
         <button
-          className={`md:hidden text-xl ${scrolled ? 'text-dark dark:text-white' : 'text-white'}`}
+          className={`md:hidden w-11 h-11 flex items-center justify-center rounded-xl ${scrolled ? 'text-dark dark:text-white' : 'text-white'}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Buka menu"
         >
-          {menuOpen ? '✕' : '☰'}
+          <span className="text-xl">{menuOpen ? '✕' : '☰'}</span>
         </button>
       </div>
 

@@ -166,38 +166,38 @@ export default function KeranjangPage() {
                 variants={fadeUp}
                 layout
                 exit={{ opacity: 0, x: 100, height: 0 }}
-                className="bg-white dark:bg-card rounded-2xl p-4 flex items-center gap-4 border border-border/50 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-card rounded-2xl p-3 sm:p-4 flex items-center gap-2 sm:gap-4 border border-border/50 shadow-sm hover:shadow-md transition-shadow flex-wrap sm:flex-nowrap"
               >
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-rose/10 flex items-center justify-center text-2xl shrink-0">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-rose/10 flex items-center justify-center text-xl sm:text-2xl shrink-0">
                   🍰
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-dark dark:text-white truncate">{item.name}</h3>
-                  <p className="text-primary font-bold text-sm">Rp {item.price.toLocaleString('id-ID')}</p>
+                <div className="flex-1 min-w-0 order-3 sm:order-none w-full sm:w-auto mt-1 sm:mt-0">
+                  <h3 className="font-semibold text-dark dark:text-white truncate text-sm sm:text-base">{item.name}</h3>
+                  <p className="text-primary font-bold text-xs sm:text-sm">Rp {item.price.toLocaleString('id-ID')}</p>
                 </div>
                 <div className="flex items-center gap-1 bg-white dark:bg-card border border-border rounded-xl">
                   <motion.button
                     onClick={() => changeQty(item.id, -1)}
-                    className="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-primary/10 text-text font-bold transition-colors"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center hover:bg-primary/10 text-text font-bold transition-colors"
                     whileTap={{ scale: 0.9 }}
                   >
                     −
                   </motion.button>
-                  <span className="w-8 text-center font-bold text-text text-sm">{item.qty}</span>
+                  <span className="w-7 sm:w-8 text-center font-bold text-text text-sm">{item.qty}</span>
                   <motion.button
                     onClick={() => changeQty(item.id, 1)}
-                    className="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-primary/10 text-text font-bold transition-colors"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center hover:bg-primary/10 text-text font-bold transition-colors"
                     whileTap={{ scale: 0.9 }}
                   >
                     +
                   </motion.button>
                 </div>
-                <p className="font-bold text-dark dark:text-white w-24 text-right text-sm">
+                <p className="font-bold text-dark dark:text-white w-auto sm:w-24 text-right text-xs sm:text-sm order-last sm:order-none ml-auto sm:ml-0">
                   Rp {(item.price * item.qty).toLocaleString('id-ID')}
                 </p>
                 <motion.button
                   onClick={() => removeItem(item.id)}
-                  className="w-9 h-9 rounded-xl flex items-center justify-center text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 transition-all"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 transition-all"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >

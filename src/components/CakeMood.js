@@ -75,7 +75,7 @@ export default function CakeMood() {
             }}
             whileHover={{ scale: 1.06, y: -8 }}
             whileTap={{ scale: 0.92 }}
-            className={`group relative flex flex-col items-center gap-2 px-4 py-6 rounded-2xl transition-all duration-300 ${
+            className={`group relative flex flex-col items-center gap-1.5 md:gap-2 px-3 md:px-4 py-4 md:py-6 rounded-2xl transition-all duration-300 ${
               selected === m.id
                 ? `bg-gradient-to-br ${m.bg} text-white shadow-xl ${m.shadow}`
                 : 'bg-white/10 backdrop-blur-md border border-white/10 text-white hover:bg-white/20'

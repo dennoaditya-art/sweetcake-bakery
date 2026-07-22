@@ -66,7 +66,7 @@ export default function HomePage() {
   return (
     <div className="relative">
       {/* ===== HERO ===== */}
-      <section ref={heroRef} className="relative h-screen overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen md:h-screen overflow-hidden">
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img src={BG_IMAGES.hero} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/70" />
@@ -84,9 +84,9 @@ export default function HomePage() {
           className="relative z-10 h-full flex items-center"
           style={{ y: heroContentY, opacity: heroOpacity }}
         >
-          <div className="max-w-7xl mx-auto px-6 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="pt-16 sm:pt-0">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function HomePage() {
                 </motion.div>
 
                 <motion.h1
-                  className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-4 font-display"
+                  className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-4 font-display"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -128,7 +128,7 @@ export default function HomePage() {
                 >
                   <Link
                     href="/katalog"
-                    className="group bg-gradient-to-r from-primary to-coral text-white font-bold px-8 py-3.5 rounded-full hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 text-base inline-flex items-center gap-2"
+                    className="group bg-gradient-to-r from-primary to-coral text-white font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2 min-h-[44px]"
                   >
                     {siteConfig.hero.cta}
                     <motion.span
@@ -141,7 +141,7 @@ export default function HomePage() {
                   </Link>
                   <Link
                     href="/tentang"
-                    className="glass text-white/80 font-semibold px-8 py-3.5 rounded-full hover:bg-white/20 hover:text-white transition-all duration-300 text-base"
+                    className="glass text-white/80 font-semibold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full hover:bg-white/20 hover:text-white transition-all duration-300 text-sm sm:text-base min-h-[44px] inline-flex items-center"
                   >
                     {siteConfig.nav.links.find(l => l.href === '/tentang')?.label || 'Cerita Kami'}
                   </Link>
@@ -243,7 +243,7 @@ export default function HomePage() {
       <ParallaxSection
         bgImage={BG_IMAGES.mood}
         overlayColor="from-black/75 via-black/50 to-black/80"
-        className="h-screen"
+        className="min-h-screen md:h-screen"
       >
         <div className="h-full flex flex-col items-center justify-center px-6 relative">
           {/* Floating labels */}
@@ -315,7 +315,7 @@ export default function HomePage() {
       <ParallaxSection
         bgImage={BG_IMAGES.categories}
         overlayColor="from-black/75 via-black/50 to-black/70"
-        className="h-screen"
+        className="min-h-screen md:h-screen"
       >
         <div className="h-full flex flex-col items-center justify-center px-6">
           <Reveal>
@@ -364,7 +364,7 @@ export default function HomePage() {
                 <motion.div key={cat.id} variants={staggerItem}>
                   <Link
                     href={`/katalog?category=${cat.id}`}
-                    className={`group relative block w-40 h-48 rounded-2xl overflow-hidden bg-gradient-to-b ${colors[i % colors.length]} border ${colors[i % colors.length].split(' ')[2]} hover:shadow-2xl hover:shadow-white/10 transition-all duration-500`}
+                    className={`group relative block w-36 sm:w-40 h-44 sm:h-48 rounded-2xl overflow-hidden bg-gradient-to-b ${colors[i % colors.length]} border ${colors[i % colors.length].split(' ')[2]} hover:shadow-2xl hover:shadow-white/10 transition-all duration-500`}
                   >
                     <div className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-500">
                       <img
@@ -401,7 +401,7 @@ export default function HomePage() {
       <ParallaxSection
         bgImage={BG_IMAGES.products}
         overlayColor="from-black/80 via-black/50 to-black/80"
-        className="min-h-screen py-20"
+        className="min-h-screen py-12 md:py-20"
       >
         <div className="h-full flex flex-col items-center justify-center px-6">
           <Reveal>
@@ -416,7 +416,7 @@ export default function HomePage() {
           </Reveal>
 
           {products.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-5xl">
               {products.slice(0, 8).map((product, i) => {
                 const badges = siteConfig.productBadges;
                 const gradients = [
@@ -505,7 +505,7 @@ export default function HomePage() {
       <ParallaxSection
         bgImage={BG_IMAGES.instagram}
         overlayColor="from-black/75 via-black/50 to-black/70"
-        className="h-screen"
+        className="min-h-screen md:h-screen"
       >
         <div className="h-full flex flex-col items-center justify-center px-6">
           <Reveal>
@@ -580,7 +580,7 @@ export default function HomePage() {
       <ParallaxSection
         bgImage={BG_IMAGES.testimonials}
         overlayColor="from-black/70 via-black/50 to-black/70"
-        className="h-screen"
+        className="min-h-screen md:h-screen"
       >
         <div className="h-full flex flex-col items-center justify-center px-6">
           <Reveal>
@@ -624,7 +624,7 @@ export default function HomePage() {
       <ParallaxSection
         bgImage={BG_IMAGES.cta}
         overlayColor="from-black/70 via-black/50 to-black/70"
-        className="h-screen"
+        className="min-h-screen md:h-screen"
       >
         <div className="h-full flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
           <Sprinkles count={20} />
