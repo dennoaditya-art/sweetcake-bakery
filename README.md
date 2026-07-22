@@ -2,7 +2,9 @@
 
 > **Next.js 16 + Tailwind CSS v4 + framer-motion** — Template landing page toko kue homemade premium dengan animasi scroll cinematic, dark/light mode, dan admin panel lengkap.
 
-![Demo](https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=1200&h=630&fit=crop)
+**Live Demo → [sweetcake-bakery.vercel.app](https://sweetcake-bakery.vercel.app)**
+
+![Hero Screenshot](https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=1200&h=630&fit=crop)
 
 ---
 
@@ -125,6 +127,22 @@ Semua gambar background ada di `src/app/page.js` — array `BG_IMAGES`.
 
 ---
 
+## 📦 Data & Konten
+
+Semua data disimpan sebagai **JSON files** di `src/data/`:
+
+| File | Isi |
+|------|-----|
+| `products.json` | Produk — `id, name, slug, price, image, description, categoryId, stock, featured` |
+| `categories.json` | Kategori — `id, name, slug, description` |
+| `testimonials.json` | Testimoni — `id, name, message, rating, photo, createdAt` |
+| `gallery.json` | Galeri foto — `id, image, caption` |
+| `orders.json` | Pesanan (otomatis dari form checkout) |
+
+Tinggal edit file JSON-nya langsung — **no database needed**.
+
+---
+
 ## 📂 Struktur Project
 
 ```
@@ -181,8 +199,9 @@ MIT — bebas pakai, edit, jual lagi untuk client.
 
 ---
 
-## 🧁 Live Demo
+## 🧁 Admin Panel
 
-[https://sweetcake-bakery.vercel.app](https://sweetcake-bakery.vercel.app)
+**URL:** `/admin` (sidebar navigasi)
+**Login:** `admin / admin123`
 
-Admin: `/admin/login` — `admin / admin123`
+Dashboard statistik, CRUD Produk, Kategori, Pesanan, Testimoni, Galeri.

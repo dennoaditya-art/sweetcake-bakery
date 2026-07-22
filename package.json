@@ -1,7 +1,10 @@
 {
-  "name": "toko-kue",
-  "version": "0.1.0",
+  "name": "sweetcake-bakery",
+  "version": "1.0.0",
   "private": true,
+  "description": "Next.js template landing page toko kue homemade premium — cinematic scroll, dark/light mode, admin panel",
+  "author": "SweetCake",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
