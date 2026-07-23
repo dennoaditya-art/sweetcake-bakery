@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "slug": "red-velvet-cake",
+    "title": "Red Velvet Cake Homemade",
+    "image": "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&h=600&fit=crop",
+    "description": "Red velvet cake klasik dengan cream cheese frosting yang lembut dan creamy.",
+    "ingredients": [
+      "250 gr tepung terigu protein sedang",
+      "200 gr gula pasir",
+      "2 butir telur",
+      "100 ml buttermilk",
+      "1 sdm cokelat bubuk",
+      "1 sdt pasta red velvet",
+      "1 sdt baking soda",
+      "1 sdt cuka",
+      "150 gr mentega",
+      "200 gr cream cheese untuk frosting"
+    ],
+    "steps": [
+      "Kocok mentega dan gula hingga mengembang.",
+      "Masukkan telur satu per satu sambil terus dikocok.",
+      "Campur tepung, cokelat bubuk, dan baking soda. Ayak.",
+      "Masukkan campuran tepung bergantian dengan buttermilk.",
+      "Tambahkan pasta red velvet, aduk rata.",
+      "Terakhir masukkan cuka, aduk cepat.",
+      "Panggang di loyang yang sudah dioles mentega selama 35 menit suhu 180°C.",
+      "Dinginkan, lalu hias dengan cream cheese frosting."
+    ],
+    "difficulty": "Mudah",
+    "cookTime": "45 menit",
+    "servings": 8,
+    "category": "cake",
+    "createdAt": "2026-06-01"
+  },
+  {
+    "id": 2,
+    "slug": "nastar-keju",
+    "title": "Nastar Keju Lumer",
+    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&h=600&fit=crop",
+    "description": "Kue kering nastar dengan isian selai nanas homemade dan taburan keju di atasnya.",
+    "ingredients": [
+      "500 gr tepung terigu",
+      "200 gr mentega",
+      "100 gr gula halus",
+      "2 butir kuning telur",
+      "2 sdm susu bubuk",
+      "Selai nanas secukupnya",
+      "Keju parut untuk taburan"
+    ],
+    "steps": [
+      "Kocok mentega dan gula halus hingga lembut.",
+      "Masukkan kuning telur, kocok rata.",
+      "Masukkan tepung dan susu bubuk, uleni hingga kalis.",
+      "Ambil sedikit adonan, isi dengan selai nanas, bulatkan.",
+      "Oles dengan kuning telur dan taburi keju parut.",
+      "Panggang suhu 150°C selama 20 menit hingga matang."
+    ],
+    "difficulty": "Mudah",
+    "cookTime": "60 menit",
+    "servings": 25,
+    "category": "kue kering",
+    "createdAt": "2026-05-20"
+  },
+  {
+    "id": 3,
+    "slug": "bolu-pandan",
+    "title": "Bolu Pandan Lembut",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop",
+    "description": "Bolu pandan hijau natural dengan aroma pandan asli, tekstur super lembut.",
+    "ingredients": [
+      "4 butir telur",
+      "150 gr gula pasir",
+      "150 gr tepung terigu",
+      "1 sdt SP",
+      "100 ml santan",
+      "1 sdt pasta pandan",
+      "50 ml minyak sayur",
+      "Sejumput garam"
+    ],
+    "steps": [
+      "Kocok telur, gula, dan SP hingga mengembang putih kental.",
+      "Masukkan tepung yang sudah diayak, aduk balik.",
+      "Campur santan, pasta pandan, dan minyak. Masukkan ke adonan.",
+      "Aduk perlahan hingga rata.",
+      "Tuang ke loyang yang sudah dioles mentega.",
+      "Panggang suhu 180°C selama 30 menit.",
+      "Tes tusuk untuk memastikan matang."
+    ],
+    "difficulty": "Mudah",
+    "cookTime": "40 menit",
+    "servings": 10,
+    "category": "cake",
+    "createdAt": "2026-06-05"
+  },
+  {
+    "id": 4,
+    "slug": "cupcake-pelangi",
+    "title": "Cupcake Pelangi",
+    "image": "https://images.unsplash.com/photo-1486427944544-d2c246c4df1a?w=800&h=600&fit=crop",
+    "description": "Cupcake warna-warni yang lucu dan menggemaskan, cocok untuk pesta anak-anak.",
+    "ingredients": [
+      "200 gr tepung terigu",
+      "150 gr gula pasir",
+      "2 butir telur",
+      "100 ml susu cair",
+      "80 ml minyak sayur",
+      "1 sdt baking powder",
+      "Pewarna makanan (merah, kuning, hijau, biru)",
+      "Buttercream untuk hiasan"
+    ],
+    "steps": [
+      "Campur semua bahan kering, sisihkan.",
+      "Kocok telur dan gula hingga mengembang.",
+      "Masukkan campuran tepung bergantian dengan susu dan minyak.",
+      "Bagi adonan menjadi 4 bagian, beri pewarna berbeda.",
+      "Tuang berlapis ke dalam cup kertas.",
+      "Panggang suhu 180°C selama 20 menit.",
+      "Hias dengan buttercream warna-warni."
+    ],
+    "difficulty": "Sedang",
+    "cookTime": "35 menit",
+    "servings": 12,
+    "category": "cake",
+    "createdAt": "2026-06-10"
+  },
+  {
+    "id": 5,
+    "slug": "roti-sobek-keju",
+    "title": "Roti Sobek Keju",
+    "image": "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&h=600&fit=crop",
+    "description": "Roti sobek empuk dengan isian keju melted yang lumer di mulut.",
+    "ingredients": [
+      "300 gr tepung terigu protein tinggi",
+      "1 butir telur",
+      "150 ml susu hangat",
+      "6 gr ragi instan",
+      "40 gr gula pasir",
+      "30 gr mentega",
+      "Sejumput garam",
+      "Keju mozzarella untuk isian"
+    ],
+    "steps": [
+      "Campur ragi, gula, dan susu hangat. Diamkan 10 menit hingga berbusa.",
+      "Campur tepung, telur, dan campuran ragi. Uleni.",
+      "Masukkan mentega dan garam, uleni hingga kalis elastis.",
+      "Diamkan 1 jam hingga mengembang.",
+      "Kempiskan adonan, isi dengan keju, bulatkan.",
+      "Tata di loyang, diamkan lagi 30 menit.",
+      "Oles dengan susu cair, panggang suhu 180°C selama 25 menit."
+    ],
+    "difficulty": "Sedang",
+    "cookTime": "2 jam",
+    "servings": 12,
+    "category": "roti",
+    "createdAt": "2026-06-08"
+  }
+]

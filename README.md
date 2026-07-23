@@ -1,74 +1,114 @@
-# SweetCake — Toko Kue Homemade Template
+# 🧁 SweetCake Bakery — Next.js Template Toko Kue Premium
 
-> **Next.js 16 + Tailwind CSS v4 + framer-motion** — Template landing page toko kue homemade premium dengan animasi scroll cinematic, dark/light mode, dan admin panel lengkap.
+> **Next.js 16 + Tailwind CSS v4 + framer-motion + TypeScript** — Template landing page toko kue homemade premium dengan animasi scroll cinematic, dark/light mode, dan admin panel CRUD lengkap. Siap deploy dalam 5 menit.
 
-**Live Demo → [sweetcake-bakery.vercel.app](https://sweetcake-bakery.vercel.app)**
-
-![Hero Screenshot](https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=1200&h=630&fit=crop)
-
----
-
-## ✨ Fitur Utama
-
-| Fitur | Detail |
-|-------|--------|
-| **Landing Page** | 7 section cinematic dengan parallax, scroll-driven animation, floating decorations |
-| **Cake Mood Finder** | Pilih mood, dapat rekomendasi kue — interaktif dengan animasi spring |
-| **Katalog Produk** | Grid responsive, filter kategori, search, skeleton loading |
-| **Detail Produk** | Halaman produk individu dengan quantity picker & add-to-cart |
-| **Keranjang** | Animated cart, quantity control, exit animations |
-| **Checkout** | Multi-step form, order summary, loading state |
-| **Galeri** | Masonry grid dengan lightbox viewer |
-| **Testimoni** | Hero stats, masonry grid, form submit + carousel di homepage |
-| **Tentang Kami** | Cerita brand, visi, misi, keunggulan |
-| **Admin Panel** | Sidebar layout, Dashboard stats, CRUD Produk/Kategori/Pesanan/Testimoni/Galeri |
-| **Dark Mode** | Full dark/light theme, persist ke localStorage |
-| **Animasi** | framer-motion — scroll reveal, stagger, parallax, spring, page transitions |
-| **SEO Ready** | Unique page title per halaman, meta description |
-| **Responsive** | Mobile-first, hamburger menu, semua halaman responsive |
-| **Accessibility** | aria-labels, keyboard navigation, focus-visible, semantic HTML |
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-sweetcake--bakery.vercel.app-FF6B8A?style=for-the-badge)](https://sweetcake-bakery.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js%2016-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind%20CSS%20v4-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🚀 Tech Stack
+## ✨ Preview
 
-- **Next.js 16** (Turbopack)
-- **Tailwind CSS v4**
-- **framer-motion** — animasi
-- **shadcn/ui** (Radix UI primitives) — siap dipakai
-- **Google Fonts** — Fredoka (display), Nunito (body), Playfair Display (serif)
+| Halaman | Public | Admin |
+|---------|--------|-------|
+| **Landing Page** | Hero parallax, mood finder, kategori, produk, instagram feed, testimoni, CTA | Dashboard statistik |
+| **Katalog** | Grid produk, filter kategori, search, skeleton loading | CRUD produk |
+| **Detail Produk** | Quantity picker, add-to-cart dengan animasi | Edit produk |
+| **Keranjang** | Animated cart, quantity control, exit animations | — |
+| **Checkout** | Multi-step form, order summary, loading state | Manajemen pesanan |
+| **Galeri** | Masonry grid dengan lightbox viewer | Upload/delete foto |
+| **Testimoni** | Hero stats, masonry grid, form submit | Delete testimoni |
+| **Tentang** | Cerita brand, visi, misi, keunggulan | — |
+| **Resep** | API ready (data included) | — |
 
 ---
 
-## 📦 Instalasi
+## 🚀 Fitur Lengkap
+
+### 🎨 Frontend
+- **7 Section Landing Page** — Hero parallax, Cake Mood Finder interaktif, kategori, produk unggulan, Instagram feed, testimoni carousel, CTA
+- **Animasi Cinematic** — framer-motion: scroll reveal, parallax, spring, stagger, page transitions, floating elements
+- **Dark/Light Mode** — Full theme dengan CSS variables, localStorage persist, `prefers-color-scheme` detection
+- **Responsive** — Mobile-first, hamburger menu, grid adaptif, touch-friendly (min 44px)
+- **Aksesibilitas** — `aria-label`, semantic HTML, focus-visible, keyboard navigation
+- **Typography** — Fredoka (display), Nunito (body), Playfair Display (serif)
+
+### 🛒 E-commerce
+- **Katalog Produk** — Grid, filter kategori, search real-time, skeleton loading, empty states
+- **Detail Produk** — Quantity picker animasi, add-to-cart dengan feedback
+- **Keranjang** — Animated cart dengan exit animations, cart badge di navbar
+- **Checkout** — Multi-step form, order summary, loading/error states
+- **Pesanan Sukses** — Celebration animation
+
+### 🔐 Admin Panel (Full CRUD)
+- **Dashboard** — 4 stat cards (produk, kategori, pesanan, testimoni)
+- **Produk** — Tambah/edit/hapus produk dengan form lengkap
+- **Kategori** — Tambah/edit/hapus kategori
+- **Pesanan** — List pesanan, update status (baru → diproses → dikirim → selesai/dibatalkan)
+- **Testimoni** — Lihat/hapus testimoni pelanggan
+- **Galeri** — Tambah/hapus foto galeri
+- **Auth** — JWT + bcrypt + HttpOnly cookies, middleware protection, login/logout
+
+### 🛡️ Keamanan & SEO
+- **JWT Authentication** — Token-based admin auth dengan 24h expiry
+- **SEO Metadata** — OpenGraph, Twitter Card, per-page unique title
+- **Sitemap & Robots** — Auto-generated `sitemap.xml` dan `robots.txt`
+- **Error Boundaries** — Custom 404, error pages, loading states
+- **favicon** — Custom branded favicon
+
+### ⚡ Performance
+- **Next.js 16 + Turbopack** — Fast dev server, optimized production builds
+- **TypeScript** — Full type safety (progressive migration, `allowJs: true`)
+- **Tailwind CSS v4** — Utility-first, zero-runtime CSS
+- **Lazy Loading** — `loading="lazy"` pada images, dynamic imports siap
+
+---
+
+## 📦 Tech Stack
+
+| Teknologi | Versi | Fungsi |
+|-----------|-------|--------|
+| Next.js | 16.2.10 | Framework (App Router, Turbopack) |
+| React | 19.2.4 | UI library |
+| TypeScript | 5.x | Type safety |
+| Tailwind CSS | 4.x | Styling |
+| framer-motion | 12.42.2 | Animasi |
+| bcryptjs | 3.x | Password hashing |
+| jose | 6.x | JWT token |
+
+---
+
+## 🚀 Quick Start
 
 ```bash
 git clone <repo-url> sweetcake-store
 cd sweetcake-store
+cp .env.example .env.local
 npm install
 npm run dev
 ```
 
 Buka [http://localhost:3000](http://localhost:3000).
 
-### Build Production
+### Admin Panel
 
-```bash
-npm run build
-npm start
-```
+| URL | Login |
+|-----|-------|
+| `/admin` | Username: `admin` |
+| `/admin/login` | Password: `admin123` |
 
 ---
 
 ## 🎨 Kustomisasi
 
-Semua konfigurasi brand ada di **satu file**: `src/lib/config.js`
+Semua teks brand ada di **satu file**: `src/lib/config.ts`
 
 ### Ganti Nama Toko
 
-Edit `src/lib/config.js`:
-
-```js
+```ts
 export const siteConfig = {
   name: 'Toko Kamu',          // ← nama toko
   tagline: 'Toko Kue Premium',
@@ -77,106 +117,84 @@ export const siteConfig = {
 };
 ```
 
-### Ganti Contact & Social Media
-
-```js
-contact: {
-  email: 'kamu@email.com',
-  phone: '08xx-xxxx-xxxx',
-  address: 'Kota, Indonesia',
-},
-social: {
-  instagram: 'https://instagram.com/akun_kamu',
-  instagramHandle: '@akun_kamu',
-},
-```
-
-### Ganti Hero Section
-
-```js
-hero: {
-  badge: 'Homemade dengan Cinta',
-  title: 'Tagline Utama',
-  titleHighlight: 'Kata Kunci',
-  subtitle: 'Deskripsi hero...',
-  cta: 'Tombol CTA',
-  socialProof: 'Dicintai {count} pelanggan',
-  socialProofCount: '1.000+',
-},
-```
-
-### Ganti Semua Teks Halaman
-
-Setiap halaman punya konfigurasi teks masing-masing di `config.js`:
-- `katalogPage`, `keranjangPage`, `checkoutPage`, `galeriPage`, `pesananSuksesPage`
-- `aboutPage`, `testimoniPage`, `testimonialsSection`, `instagramSection`
-- `moodSection`, `categoriesSection`, `productsSection`, `ctaSection`
-- `footer`, `nav`, `admin`
-
 ### Ganti Warna
 
-Edit `src/app/globals.css` — semua CSS variables ada di `:root` dan `.dark`.
+Edit `src/app/globals.css` — semua CSS variables di `:root` dan `.dark`.
 
 ### Ganti Logo
 
-Di `Navbar.js` — cari `🧁` dan ganti dengan logo/icon kamu.
+Di `src/components/Navbar.js` — cari `🧁` dan ganti dengan logo SVG atau icon kamu.
 
 ### Ganti Gambar
 
-Semua gambar background ada di `src/app/page.js` — array `BG_IMAGES`.
+Semua gambar background di `src/components/sections/` — setiap section punya file sendiri.
 
 ---
 
-## 📦 Data & Konten
-
-Semua data disimpan sebagai **JSON files** di `src/data/`:
-
-| File | Isi |
-|------|-----|
-| `products.json` | Produk — `id, name, slug, price, image, description, categoryId, stock, featured` |
-| `categories.json` | Kategori — `id, name, slug, description` |
-| `testimonials.json` | Testimoni — `id, name, message, rating, photo, createdAt` |
-| `gallery.json` | Galeri foto — `id, image, caption` |
-| `orders.json` | Pesanan (otomatis dari form checkout) |
-
-Tinggal edit file JSON-nya langsung — **no database needed**.
-
----
-
-## 📂 Struktur Project
+## 📁 Struktur Project
 
 ```
-src/
-├── app/
-│   ├── page.js                # Homepage (7 section)
-│   ├── layout.js              # Root layout + metadata
-│   ├── globals.css            # CSS variables, keyframes, theme
-│   ├── katalog/               # Katalog + detail produk
-│   ├── keranjang/             # Keranjang belanja
-│   ├── checkout/              # Checkout form
-│   ├── galeri/                # Galeri foto
-│   ├── testimoni/             # Testimoni + form
-│   ├── pesanan-sukses/        # Sukses page
-│   ├── tentang/               # About page
-│   └── admin/                 # Admin panel (CRUD)
-├── components/
-│   ├── Navbar.js              # Fixed glassmorphism navbar
-│   ├── Footer.js              # 4-column footer
-│   ├── CakeMood.js            # Mood finder component
-│   ├── ParallaxSection.js     # Reusable parallax wrapper
-│   ├── Reveal.js              # Scroll reveal animation
-│   ├── Skeleton.js            # Loading skeletons
-│   ├── Sprinkles.js           # Decorative sprinkles
-│   ├── TestimonialCarousel.js # Auto-slide carousel
-│   ├── Breadcrumb.js          # Breadcrumb navigation
-│   ├── PageTransition.js      # Page fade transition
-│   ├── ThemeProvider.js       # Dark/light mode provider
-│   └── ThemeToggle.js         # Theme toggle button
-├── lib/
-│   └── config.js              # ★ Semua konfigurasi brand
-├── hooks/
-│   └── useTitle.js            # SEO title hook
-└── data/                      # JSON data files
+sweetcake-bakery/
+├── public/                    # Static assets (favicon, manifest)
+├── src/
+│   ├── app/                   # Next.js App Router
+│   │   ├── page.js            # Homepage (import 7 section components)
+│   │   ├── layout.js          # Root layout + metadata
+│   │   ├── globals.css        # CSS variables, keyframes, theme
+│   │   ├── loading.js         # Root loading state
+│   │   ├── error.js           # Root error boundary
+│   │   ├── not-found.js       # Custom 404 page
+│   │   ├── sitemap.js         # Auto-generated sitemap
+│   │   ├── robots.js          # Robots.txt config
+│   │   ├── katalog/           # Product catalog + detail
+│   │   ├── keranjang/         # Shopping cart
+│   │   ├── checkout/          # Checkout form
+│   │   ├── galeri/            # Photo gallery
+│   │   ├── testimoni/         # Testimonials + form
+│   │   ├── pesanan-sukses/    # Order success page
+│   │   ├── tentang/           # About page
+│   │   ├── admin/             # Admin panel (CRUD)
+│   │   └── api/               # REST API routes
+│   ├── components/
+│   │   ├── sections/          # ★ Homepage section components
+│   │   │   ├── HeroSection.js
+│   │   │   ├── MoodSection.js
+│   │   │   ├── CategoriesSection.js
+│   │   │   ├── ProductsSection.js
+│   │   │   ├── InstagramSection.js
+│   │   │   ├── TestimonialsSection.js
+│   │   │   └── CTASection.js
+│   │   ├── Navbar.js          # Fixed glassmorphism navbar
+│   │   ├── Footer.js          # 4-column footer
+│   │   ├── CakeMood.js        # Mood finder component
+│   │   ├── ParallaxSection.js # Reusable parallax wrapper
+│   │   ├── Reveal.js          # Scroll reveal animation
+│   │   ├── Skeleton.js        # Loading skeletons
+│   │   ├── Sprinkles.js       # Decorative sprinkles
+│   │   ├── TestimonialCarousel.js
+│   │   ├── Breadcrumb.js      # Breadcrumb navigation
+│   │   ├── PageTransition.js  # Page fade transition
+│   │   ├── ThemeProvider.js   # Dark/light mode provider
+│   │   └── ThemeToggle.js     # Theme toggle button
+│   ├── lib/
+│   │   ├── config.ts          # ★ Semua konfigurasi brand
+│   │   └── dataHelper.ts      # JSON file read/write
+│   ├── hooks/
+│   │   └── useTitle.ts        # SEO title hook
+│   ├── types/
+│   │   └── index.ts           # TypeScript type definitions
+│   └── data/                  # JSON data files
+│       ├── products.json
+│       ├── categories.json
+│       ├── testimonials.json
+│       ├── gallery.json
+│       ├── orders.json
+│       ├── admin.json
+│       └── resep.json
+├── tsconfig.json
+├── next.config.ts
+├── tailwind.config.js         # (via @tailwindcss/postcss)
+└── package.json
 ```
 
 ---
@@ -184,24 +202,27 @@ src/
 ## 🌐 Deploy ke Vercel
 
 ```bash
-npm run build    # pastikan build success
+npm run build
 ```
 
 Push ke GitHub, connect ke Vercel, deploy.
 
-Sudah include `next.config.mjs` dengan `remotePatterns` untuk `images.unsplash.com`.
+**Catatan:** Template ini menggunakan JSON file storage. Untuk Vercel (serverless), data akan persist selama session. Untuk production, upgrade ke database (Supabase, MongoDB, etc) — atau gunakan mode `/tmp` fallback yang sudah tersedia di `dataHelper.ts`.
 
 ---
 
 ## 📄 License
 
-MIT — bebas pakai, edit, jual lagi untuk client.
+MIT — bebas pakai, edit, dan jual kembali untuk client projects.
 
 ---
 
-## 🧁 Admin Panel
+## 🧁 Support
 
-**URL:** `/admin` (sidebar navigasi)
-**Login:** `admin / admin123`
+Butuh bantuan? Ada saran? Feel free to reach out:
+- Email: hello@sweetcake.id
+- Instagram: @sweetcake_id
 
-Dashboard statistik, CRUD Produk, Kategori, Pesanan, Testimoni, Galeri.
+---
+
+<p align="center">Dibuat dengan 💖 dan 🧁</p>

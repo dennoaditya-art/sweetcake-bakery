@@ -1,35 +1,7 @@
-'use client';
-
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
 import { siteConfig } from '@/lib/config';
 
-function LogoutButton() {
-  const router = useRouter();
-
-  const handleLogout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' });
-    router.push('/admin/login');
-  };
-
-  return (
-    <button
-      onClick={handleLogout}
-      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 w-full text-left"
-    >
-      <span className="text-base">🚪</span>
-      Logout
-    </button>
-  );
-}
-
-export default function AdminLayout({ children }) {
-  const pathname = usePathname();
-
-  if (pathname === '/admin/login') {
-    return <>{children}</>;
-  }
-
+export default function AdminLoading() {
   return (
     <div className="min-h-screen bg-muted dark:bg-dark pt-16">
       <div className="flex">
@@ -45,18 +17,22 @@ export default function AdminLayout({ children }) {
               {item.label}
             </Link>
           ))}
-          <div className="mt-auto pt-4 border-t border-border/50 space-y-1">
+          <div className="mt-auto pt-4 border-t border-border/50">
             <Link
               href="/"
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-text-muted hover:text-primary hover:bg-primary/5 transition-all duration-200"
             >
               ← {siteConfig.admin.viewStore}
             </Link>
-            <LogoutButton />
           </div>
         </aside>
         <main className="flex-1 md:ml-56 p-4 md:p-8">
-          {children}
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <div className="text-center">
+              <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-text-muted text-sm">Memuat...</p>
+            </div>
+          </div>
         </main>
       </div>
     </div>

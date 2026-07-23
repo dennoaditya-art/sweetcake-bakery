@@ -16,7 +16,11 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (stored.length === 0) router.replace('/katalog');
+    if (stored.length === 0) {
+      router.replace('/katalog');
+      return;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCart(stored);
   }, [router]);
 

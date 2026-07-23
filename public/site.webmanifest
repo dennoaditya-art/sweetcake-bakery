@@ -1,0 +1,15 @@
+{
+  "name": "SweetCake - Toko Kue Homemade",
+  "short_name": "SweetCake",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8F0",
+  "theme_color": "#FF6B8A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

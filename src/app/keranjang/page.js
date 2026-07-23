@@ -20,10 +20,12 @@ const fadeUp = {
 export default function KeranjangPage() {
   useTitle(`Keranjang - ${siteConfig.name}`);
   const [cart, setCart] = useState([]);
+  const [showEmpty, setShowEmpty] = useState(false);
   const [exitingItems, setExitingItems] = useState([]);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('cart') || '[]');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCart(stored);
     if (stored.length === 0) setShowEmpty(true);
   }, []);
@@ -45,8 +47,6 @@ export default function KeranjangPage() {
     });
     updateCart(newCart);
   };
-
-  const [showEmpty, setShowEmpty] = useState(false);
 
   const removeItem = id => {
     const newCart = cart.filter(item => item.id !== id);

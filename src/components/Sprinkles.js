@@ -11,12 +11,13 @@ export default function Sprinkles({ count = 15 }) {
   useEffect(() => {
     const items = Array.from({ length: count }, (_, i) => ({
       id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 5,
-      duration: 4 + Math.random() * 6,
-      size: 12 + Math.random() * 16,
-      emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+      left: ((i * 13 + 7) % 100),
+      delay: (i * 0.7) % 5,
+      duration: 4 + ((i * 3) % 6),
+      size: 12 + ((i * 5) % 16),
+      emoji: EMOJIS[i % EMOJIS.length],
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(items);
   }, [count]);
 
